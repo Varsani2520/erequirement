@@ -45,7 +45,7 @@ const HomeCard = () => {
       <Box sx={{ display: "flex" }}>
         <Grid container spacing={2}>
           {loading
-            ? Array.from({ length: 4 }).map((_, index) => (
+            ? Array.from({ length: 6 }).map((_, index) => (
                 <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
                   <Box>
                     <Card sx={{ maxWidth: 345 }}>

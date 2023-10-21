@@ -23,16 +23,7 @@ const page = () => {
             speed={0.5}
           ></Player>
         </Grid>
-        <Grid item xs={{display:'none'}} lg={6}>
-          <video
-            autoplay
-            loop
-            src="https://cdnl.iconscout.com/lottie/premium/thumb/welcome-home-hand-draw-word-5457378-4581464.mp4"
-            style={{ height: "500px", width: "600px" }}
-            speed={0.5}
-            controls
-          ></video>
-        </Grid>
+       
       </Grid>
 
       <Divider1 />

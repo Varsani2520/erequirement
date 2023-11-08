@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { HomeService } from "../service/HomeService";
-import { Checkbox, Container, Grid } from "@mui/material";
+import { Checkbox, Container, Grid,Typography } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -59,7 +57,7 @@ const router=useRouter()
                   <Box>
                     <Card sx={{ maxWidth: 345 ,}} onClick={()=>router.push(`${response.id}/${response.slug}`)}>
                       <CardHeader title={response.title} sx={{ background: "#d4d5ee" }} />
-                      <CardMedia component="img" height="194" image={response.image} alt={response.alt} />
+                      <CardMedia component="img" height="194" image={response.image} alt={response.alt}sx={{cursor:'pointer'}} />
                       <CardContent>
                         <Typography variant="body2" color="text.secondary">
                           {response.description}

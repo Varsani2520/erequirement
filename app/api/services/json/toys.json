@@ -1,0 +1,44 @@
+{
+    "toys": [
+      {
+        "id": 1,
+        "provider_id": 1,
+        "name": "Teddy Bear",
+        "title": "Marvel Legends Avengers Endgame Thor Action Figure",
+        "img": "https://img.freepik.com/free-photo/pink-stuffed-animal-with-pink-bow-its-neck_1340-36145.jpg?size=626&ext=jpg&uid=R121733695&ga=GA1.1.248855276.1696004271&semt=sph",
+        "alt": "Marvel Legends Avengers Endgame Thor Action Figure",
+        "description": "This Marvel Legends Avengers Endgame Thor Action Figure is the perfect addition to any fan's collection. The figure is highly detailed and features a variety of points of articulation, allowing you to pose him in a variety of ways. He also comes with a number of accessories, including his hammer, Mjolnir, and his axe, Stormbreaker.",
+        "price": 29.99,
+        "offer": 10,
+        "rating": 4.5,
+        "review": "This is a great action figure! It's well-made and has a lot of detail. I'm very happy with my purchase.","slug":"Toys"
+      },
+      {
+        "id": 2,
+        "provider_id": 1,
+        "name": "Action Figure",
+        "title": "DC Comics Justice League Batman Action Figure",
+        "img": "https://img.freepik.com/free-psd/realistic-helicopter-mockup_1310-507.jpg?size=626&ext=jpg&uid=R121733695&ga=GA1.1.248855276.1696004271&semt=sph",
+        "alt": "DC Comics Justice League Batman Action Figure",
+        "description": "This DC Comics Justice League Batman Action Figure is the perfect addition to any fan's collection. The figure is highly detailed and features a variety of points of articulation, allowing you to pose him in a variety of ways. He also comes with a number of accessories, including his batarangs and his grapple gun.",
+        "price": 29.99,
+        "offer": 15,
+        "rating": 4.7,
+        "review": "This is an amazing action figure! It's even better than I expected. The detail is incredible and the articulation is great. I'm so glad I bought it.","slug":"Toys"
+      },
+      {
+        "id": 3,
+        "provider_id": 1,
+        "name": "Cube",
+        "title": "Giant Teddy Bear",
+        "img": "https://img.freepik.com/free-photo/colorful-toy-constructions-designed-shaped-light-desk-toy-plastic-construction-rubics-cube_140725-32000.jpg?size=626&ext=jpg&uid=R121733695&ga=GA1.1.248855276.1696004271&semt=sph",
+        "alt": "Giant Teddy Bear",
+        "description": "This Giant Teddy Bear is the perfect gift for any occasion. It's soft, cuddly, and sure to bring a smile to anyone's face. The bear is made from high-quality materials and is built to last.",
+        "price": 49.99,
+        "offer": 20,
+        "rating": 5,
+        "review": "This teddy bear is amazing! It's so soft and cuddly. I love it so much!","slug":"Toys"
+      }
+    ]
+  }
+  

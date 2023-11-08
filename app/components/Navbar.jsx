@@ -14,7 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
-
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 const pages = [
   { label: 'Home', link: '/' },
   { label: 'About', link: '/about' },
@@ -142,6 +142,9 @@ function App() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+          <IconButton color="primary" aria-label="add to shopping cart">
+        <AddShoppingCartIcon />
+      </IconButton>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

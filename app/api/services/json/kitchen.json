@@ -1,0 +1,44 @@
+{
+    "toys": [
+      {
+        "id": 1,
+        "provider_id": 8,
+        "name": "Cutlery Racks",
+        "title": "Marvel Legends Avengers Endgame Thor Action Figure",
+        "img": "https://images.meesho.com/images/products/95546065/3nzu4_400.webp",
+        "alt": "Marvel Legends Avengers Endgame Thor Action Figure",
+        "description": "This Marvel Legends Avengers Endgame Thor Action Figure is the perfect addition to any fan's collection. The figure is highly detailed and features a variety of points of articulation, allowing you to pose him in a variety of ways. He also comes with a number of accessories, including his hammer, Mjolnir, and his axe, Stormbreaker.",
+        "price": 29.99,
+        "offer": 10,
+        "rating": 4.5,
+        "review": "This is a great action figure! It's well-made and has a lot of detail. I'm very happy with my purchase."
+      },
+      {
+        "id": 2,
+        "provider_id": 8,
+        "name": "Jar",
+        "title": "DC Comics Justice League Batman Action Figure",
+        "img": "https://images.meesho.com/images/products/195791125/gam12_400.webp",
+        "alt": "DC Comics Justice League Batman Action Figure",
+        "description": "This DC Comics Justice League Batman Action Figure is the perfect addition to any fan's collection. The figure is highly detailed and features a variety of points of articulation, allowing you to pose him in a variety of ways. He also comes with a number of accessories, including his batarangs and his grapple gun.",
+        "price": 29.99,
+        "offer": 15,
+        "rating": 4.7,
+        "review": "This is an amazing action figure! It's even better than I expected. The detail is incredible and the articulation is great. I'm so glad I bought it."
+      },
+      {
+        "id": 3,
+        "provider_id": 8,
+        "name": "water Bottle",
+        "title": "Giant Teddy Bear",
+        "img": "https://images.meesho.com/images/products/299048646/asbfk_400.webp",
+        "alt": "Giant Teddy Bear",
+        "description": "This Giant Teddy Bear is the perfect gift for any occasion. It's soft, cuddly, and sure to bring a smile to anyone's face. The bear is made from high-quality materials and is built to last.",
+        "price": 49.99,
+        "offer": 20,
+        "rating": 5,
+        "review": "This teddy bear is amazing! It's so soft and cuddly. I love it so much!"
+      }
+    ]
+  }
+  

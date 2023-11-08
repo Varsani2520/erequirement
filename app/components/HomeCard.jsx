@@ -14,11 +14,12 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Skeleton from "@mui/material/Skeleton";
+import { useRouter } from "next/navigation";
 
 const HomeCard = () => {
   const [card, setCard] = useState([]);
   const [loading, setLoading] = useState(true);
-
+const router=useRouter()
   async function fetchCards() {
     const result = await HomeService();
     setCard(result.provider);
@@ -29,26 +30,17 @@ const HomeCard = () => {
     fetchCards();
   }, []);
 
-  const ExpandMore = styled((props) => {
-    const { expand, ...other } = props;
-    return <IconButton {...other} />;
-  })(({ theme, expand }) => ({
-    transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  }));
+  
 
   return (
     <Container>
       <Box sx={{ display: "flex" }}>
         <Grid container spacing={2}>
           {loading
-            ? Array.from({ length: 4 }).map((_, index) => (
+            ? Array.from({ length: 6 }).map((_, index) => (
                 <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
                   <Box>
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ maxWidth: 345 }} >
                       <Skeleton
                         variant="rectangular"
                         height={194}
@@ -65,7 +57,7 @@ const HomeCard = () => {
             : card.map((response) => (
                 <Grid item xs={12} sm={6} md={4} lg={4} key={response.id}>
                   <Box>
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ maxWidth: 345 ,}} onClick={()=>router.push(`${response.id}/${response.slug}`)}>
                       <CardHeader title={response.title} sx={{ background: "#d4d5ee" }} />
                       <CardMedia component="img" height="194" image={response.image} alt={response.alt} />
                       <CardContent>

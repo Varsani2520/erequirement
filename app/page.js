@@ -14,14 +14,15 @@ const page = () => {
   return (
     <Container >
       <Grid container>
-        <Grid item lg={12} md={12}>
-          <Player
+        <Grid item lg={12} md={12} sx={{mt:'10%'}}>
+          {/* <Player
             autoplay
             loop
             src={tittle}
             style={{ height: "500px", width: "600px" }}
             speed={0.5}
-          ></Player>
+          ></Player> */}
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRkYirTLhuwtOs47q2Dm3Ob1pEfQ_eXYeCUA&usqp=CAU" width={800} height={500} alt="welcome"/>
         </Grid>
         
       </Grid>

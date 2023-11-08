@@ -14,4 +14,4 @@ const serviceModal = Schema({
 });
 //modal
 export const services =
-  mongoose.models.prov || mongoose.model("provider", serviceModal);
+  mongoose.models.services || mongoose.model("services", serviceModal);

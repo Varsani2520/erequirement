@@ -14,4 +14,4 @@ const providerModal = Schema({
 });
 //modal
 export const provider =
-  mongoose.models.provider || mongoose.model("provider", providerModal);
+  mongoose.models.providers || mongoose.model("providers", providerModal);

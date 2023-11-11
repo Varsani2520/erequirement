@@ -1,1 +1,6 @@
 export const MONGO_URL="mongodb+srv://Rni:Rni@cluster0.avoq4cu.mongodb.net/"
+
+// stripe keys
+export const public_key="pk_test_51OB8gmSA155UqvokZqLMVwdZ232sWGYfjvnwmm7lm6DGDfpjj2hfrSSDLe3nrQM9fFDd1NkK1peOT9aHtioeHwc300V2uSsatp"
+
+export const secret_key="sk_test_51OB8gmSA155UqvokbS0tmzXylwKYP4SzXEZiwWCC2OQrC9A6kw0H9SYdnGJxA3sDmyJQK5ijXRNys2zZkHlgIjFY002dN3hSD7"

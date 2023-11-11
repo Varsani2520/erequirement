@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { ProviderService } from "../../service/ProviderService";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
@@ -30,6 +30,8 @@ import Link from "next/link";
 const page = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const { providerSlug } = useParams();
+  const router = useRouter();
+  const { singleProvider } = useParams();
   const [desc, setdesc] = useState([]);
   const [loading, setLoading] = useState(true);
   const StyledBreadcrumb = styled(Chip)(({ theme }) => ({
@@ -60,11 +62,9 @@ const page = () => {
   }));
   async function Desc() {
     try {
-      const response = await ProviderService(providerSlug);
-      console.log(providerSlug);
-      setdesc(response.toys);
+      const response = await ProviderService();
+      setdesc(response);
       setLoading(false);
-      console.log(response.toys);
     } catch (error) {
       console.log(error);
     }
@@ -72,92 +72,111 @@ const page = () => {
   useEffect(() => {
     Desc();
   }, []);
+  ;
   return (
     <div>
-      
-        <Box sx={{ background: "hotpink" }}>
-          <Container>
-            <Box sx={{ pt: 5, pb: 5 }}>
-              <Breadcrumbs aria-label="breadcrumb">
-                <Link href="/">
-                  <StyledBreadcrumb
-                    component="a"
-                    label="Home"
-                    icon={<HomeIcon fontSize="large" />}
-                  />
-                </Link>
+      <Box sx={{ background: "hotpink" }}>
+        <Container>
+          <Box sx={{ pt: 5, pb: 5 }}>
+            <Breadcrumbs aria-label="breadcrumb">
+              <Link href="/">
                 <StyledBreadcrumb
                   component="a"
-                  href="/about"
-                  label="About Us"
-                  icon={<ExpandMoreIcon />}
+                  label="Home"
+                  icon={<HomeIcon fontSize="large" />}
                 />
-              </Breadcrumbs>
-              <Typography variant="h4" sx={{ mt: 4 }}>
-                About Us
-              </Typography>
-            </Box>
-          </Container>
-        </Box>
-        <Box sx={{ display: "flex", mt: 10 }}>
-          <Container>
-        <Grid container spacing={2}>
-          {loading
-            ? Array.from({ length: 6 }).map((_, index) => (
-                <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                  <Box>
-                    <Card sx={{ maxWidth: 345 }}>
-                      <Skeleton
-                        variant="rectangular"
-                        height={194}
-                        animation="wave"
-                      />
-                      <CardContent>
-                        <Skeleton animation="wave" />
-                      </CardContent>
-                    </Card>
-                    <br />
-                  </Box>
-                </Grid>
-              ))
-            : desc.map((response) => (
-                <Grid item xs={12} sm={6} md={4} lg={4} key={response.id}>
-                  <Card sx={{ maxWidth: 345 }} key={response.id}>
-                    <CardHeader
-                      title={response.name}
-                      sx={{ background: "#b7bfee" }}
-                    />
-                    <CardMedia
-                      component="img"
-                      height="194"
-                      image={response.img}
-                      alt={response.alt}
-                    />
-
-                    <CardActions disableSpacing>
-                      <IconButton aria-label="add to favorites">
-                        <Checkbox
-                          {...label}
-                          icon={<FavoriteBorder />}
-                          checkedIcon={<Favorite />}
-                        />
-                      </IconButton>
-                      <IconButton aria-label="bookmark">
-                        <Checkbox
-                          {...label}
-                          icon={<BookmarkBorderIcon />}
-                          checkedIcon={<BookmarkIcon />}
-                        />
-                      </IconButton>
-                    </CardActions>
-                  </Card>
-                  <br />
-                </Grid>
-              ))}
-        </Grid>
+              </Link>
+              <StyledBreadcrumb
+                component="a"
+                href="/about"
+                label="About Us"
+                icon={<ExpandMoreIcon />}
+              />
+            </Breadcrumbs>
+            <Typography variant="h4" sx={{ mt: 4 }}>
+              About Us
+            </Typography>
+          </Box>
         </Container>
       </Box>
-      </div>
+      <Box sx={{ display: "flex", mt: 10 }}>
+        <Container>
+          <Grid container spacing={2}>
+            {loading
+              ? Array.from({ length: 6 }).map((_, index) => (
+                  <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
+                    <Box>
+                      <Card sx={{ maxWidth: 345 }}>
+                        <Skeleton
+                          variant="rectangular"
+                          height={194}
+                          animation="wave"
+                        />
+                        <CardContent>
+                          <Skeleton animation="wave" />
+                        </CardContent>
+                      </Card>
+                      <br />
+                    </Box>
+                  </Grid>
+                ))
+              : desc.map((response) => {
+                  if (providerSlug == response.provider_id)
+                    return (
+                      <>
+                        <Grid
+                          item
+                          xs={12}
+                          sm={6}
+                          md={4}
+                          lg={4}
+                          key={response.id}
+                        >
+                          <Card sx={{ maxWidth: 345 }} key={response.id}>
+                            <CardHeader
+                              title={response.name}
+                              sx={{ background: "#b7bfee" }}
+                            />
+                            <CardMedia
+                              sx={{ cursor: "pointer" }}
+                              component="img"
+                              height="194"
+                              image={response.img}
+                              alt={response.alt}
+                              onClick={(e) =>
+                                router.push(
+                                  `${response.provider_id}/${response.id}`
+                                )
+                              }
+                              key={response.id}
+                            />
+
+                            <CardActions disableSpacing>
+                              <IconButton aria-label="add to favorites">
+                                <Checkbox
+                                  {...label}
+                                  icon={<FavoriteBorder />}
+                                  checkedIcon={<Favorite />}
+                                />
+                              </IconButton>
+                              <IconButton aria-label="bookmark">
+                                <Checkbox
+                                  {...label}
+                                  icon={<BookmarkBorderIcon />}
+                                  checkedIcon={<BookmarkIcon />}
+                                />
+                              </IconButton>
+                            </CardActions>
+                          </Card>
+                          <br />
+                        </Grid>
+                      </>
+                    );
+                })}
+          </Grid>
+        </Container>
+      </Box>
+    </div>
   );
 };
 

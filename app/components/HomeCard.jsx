@@ -20,7 +20,8 @@ const HomeCard = () => {
 const router=useRouter()
   async function fetchCards() {
     const result = await HomeService();
-    setCard(result.provider);
+    setCard(result);
+    console.log(result);
     setLoading(false);
   }
 

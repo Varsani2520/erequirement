@@ -7,6 +7,7 @@ import {
   Button,
   Card,
   CardContent,
+  CardHeader,
   CardMedia,
   Chip,
   Container,
@@ -82,8 +83,8 @@ const page = () => {
           label="Home"
           icon={<HomeIcon fontSize="small" />}
         />
-        <StyledBreadcrumb component="a" href="#" label="Catalog" />
-        <StyledBreadcrumb label="Accessories" deleteIcon={<ExpandMoreIcon />} />
+        <StyledBreadcrumb component="a" href="#" label="Provider" />
+        <StyledBreadcrumb label="Services" deleteIcon={<ExpandMoreIcon />} />
       </Breadcrumbs>
       </Box>
       </Container>
@@ -102,7 +103,7 @@ const page = () => {
                     <Grid xs={12} md={6}>
                       <Card sx={{ maxWidth: 500 }}>
                         <CardMedia
-                          sx={{ height: 540 }}
+                          sx={{ height: "90vh" }}
                           image={response.img}
                           alt={response.alt}
                         />
@@ -118,7 +119,7 @@ const page = () => {
                       </Box>
                     </Grid>
                     <Grid xs={12} md={6}>
-                      <Card sx={{ minWidth: 275, background: "#b7bfee" }}>
+                      <Card sx={{ minWidth: 275, background: "#b7bfee" ,mt:'30px'}}>
                         <CardContent>
                           <Typography
                             sx={{ fontSize: 14 }}
@@ -151,9 +152,10 @@ const page = () => {
                           />
                         </CardContent>
                       </Card>
-                      <Card>
+                      <Card  sx={{mt:'10%'}}>
                         <CardContent>
-                          <Typography variant="h5">
+                          <Typography variant="h5"> 
+                          Reviews: <br/>
                             {response.review}
                           </Typography>
                         </CardContent>

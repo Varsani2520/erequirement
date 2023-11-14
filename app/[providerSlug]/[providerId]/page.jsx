@@ -89,17 +89,17 @@ const page = () => {
               <StyledBreadcrumb
                 component="a"
                 href="/about"
-                label="About Us"
+                label="Providers"
                 icon={<ExpandMoreIcon />}
               />
             </Breadcrumbs>
             <Typography variant="h4" sx={{ mt: 4 }}>
-              About Us
+              Providers
             </Typography>
           </Box>
         </Container>
       </Box>
-      <Box sx={{ display: "flex", mt: 10 }}>
+      <Box sx={{ display: "flex", mt: 10,justifyContent:'center' }}>
         <Container>
           <Grid container spacing={2}>
             {loading

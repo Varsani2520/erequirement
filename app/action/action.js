@@ -6,3 +6,9 @@ export const addToCartItem=(item)=>({
 export const removeToCartItem=(item)=>({
     type:removeToCart,payload:item
 })
+export const incrementTotal = () => ({
+    type: increment,
+  });
+  export const decrementTotal = () => ({
+    type: decrement,
+  });

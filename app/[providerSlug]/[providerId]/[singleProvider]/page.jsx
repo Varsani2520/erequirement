@@ -1,75 +1,124 @@
-import StarIcon from "@mui/icons-material/Star";
+"use client";
+import 'react-toastify/dist/ReactToastify.css';
+import { ProviderService } from "@/app/service/ProviderService";
 import {
   Box,
+  Breadcrumbs,
   Button,
   Card,
   CardContent,
   CardMedia,
+  Chip,
   Container,
   Grid,
   Rating,
   Typography,
 } from "@mui/material";
-import { useParams } from "next/router"; // Updated import
+import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-
-const Page = () => {
-  const carts = useSelector((state) => state.cart.cartItem);
+import { emphasize, styled } from "@mui/material/styles";
+import HomeIcon from "@mui/icons-material/Home";
+import StarIcon from "@mui/icons-material/Star";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { addToCartItem,incrementTotal } from '@/app/action/action';
+import { useDispatch, useSelector } from 'react-redux';
+const page = () => {
+  const carts = useSelector((state) =>state.cart.cartItems);
+  const dispatch=useDispatch()
+  function hello(item) {
+    dispatch(addToCartItem(item));
+    toast.success("add to cart success");
+    dispatch.incrementTotal(item);
+  }
+  const StyledBreadcrumb = styled(Chip)(({ theme }) => {
+    const backgroundColor =
+      theme.palette.mode === "light"
+        ? theme.palette.grey[100]
+        : theme.palette.grey[800];
+    return {
+      backgroundColor,
+      height: theme.spacing(3),
+      color: theme.palette.text.primary,
+      fontWeight: theme.typography.fontWeightRegular,
+      "&:hover, &:focus": {
+        backgroundColor: emphasize(backgroundColor, 0.06),
+      },
+      "&:active": {
+        boxShadow: theme.shadows[1],
+        backgroundColor: emphasize(backgroundColor, 0.12),
+      },
+    };
+  });
+  
   const [hlo, setHlo] = useState([]);
-  const { card } = useParams();
-  const { singleProvider } = useParams();
-
-  const dispatch = useDispatch();
+  const { providerSlug } = useParams();
+  const { providerId } = useParams();
 
   async function Providers() {
     try {
-      const response = await ProviderService(card);
+      const response = await ProviderService(providerSlug);
       setHlo(response);
     } catch (error) {
       console.log(error);
     }
   }
-
-  function hello(item) {
-    dispatch(addToCartItem(item));
-    toast.success("Add to cart success");
-    dispatch.incrementTotal(item);
-  }
-
+  
   useEffect(() => {
     Providers();
+    
   }, []);
 
   return (
-    <Box mt={4}>
+    <Box>
+      <ToastContainer/>
+      <Box sx={{ background: "hotpink" }}>
+        <Container>
+          <Box sx={{ pt: 5, pb: 5 }}>
+      <Breadcrumbs aria-label="breadcrumb">
+        <StyledBreadcrumb
+          component="a"
+          href="#"
+          label="Home"
+          icon={<HomeIcon fontSize="small" />}
+        />
+        <StyledBreadcrumb component="a" href="#" label="Catalog" />
+        <StyledBreadcrumb label="Accessories" deleteIcon={<ExpandMoreIcon />} />
+      </Breadcrumbs>
+      </Box>
+      </Container>
+      </Box>
       <ToastContainer />
       <Container>
-        <Box>
+        <Box sx={{mt:10}}>
           {hlo.map((response) => {
-            if (singleProvider == response.name)
+            if (
+              providerSlug == response.id &&
+              providerId == response.provider_id
+            )
               return (
                 <Box key={response.id}>
                   <Grid container spacing={2}>
-                    <Grid item xs={12} md={6}>
+                    <Grid xs={12} md={6}>
                       <Card sx={{ maxWidth: 500 }}>
                         <CardMedia
                           sx={{ height: 540 }}
                           image={response.img}
                           alt={response.alt}
                         />
+                      </Card>
+                      <Box sx={{ mt: 5 }}>
                         <Button
                           variant="outlined"
-                          onClick={() => hello(response)}
+                         onClick={()=>hello(response)}
                         >
                           Add to Cart
                         </Button>
                         <Button variant="outlined">Buy Now</Button>
-                      </Card>
+                      </Box>
                     </Grid>
-                    <Grid item xs={12} md={6}>
-                      <Card sx={{ minWidth: 275 }}>
+                    <Grid xs={12} md={6}>
+                      <Card sx={{ minWidth: 275, background: "#b7bfee" }}>
                         <CardContent>
                           <Typography
                             sx={{ fontSize: 14 }}
@@ -82,15 +131,15 @@ const Page = () => {
                             {response.name}
                           </Typography>
                           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            Descriptions: {response.description}
+                            descriptions:{response.description}
                           </Typography>
                           <Typography variant="primary">
                             Price: {response.price}
                             <br />
-                            Offer: {response.offer}
+                            offer:{response.offer}
                           </Typography>
                           <br />
-                          Rating:{" "}
+                          rating:{" "}
                           <Rating
                             value={response.rating}
                             emptyIcon={
@@ -104,7 +153,9 @@ const Page = () => {
                       </Card>
                       <Card>
                         <CardContent>
-                          <Typography variant="h5">{response.review}</Typography>
+                          <Typography variant="h5">
+                            {response.review}
+                          </Typography>
                         </CardContent>
                       </Card>
                     </Grid>
@@ -118,4 +169,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default page;

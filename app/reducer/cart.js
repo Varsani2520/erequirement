@@ -1,17 +1,20 @@
-const initialStaage={
-    cartItem:[],
-    status:'pending'
-}
-export const addToCart="add"
-export const removeToCart="remove"
+const initialStage = {
+  cartItems: [],
+  status: "pending",
+};
+export const addToCart = "add";
+export const removeToCart = "remove";
 
-export const cartReducer=(state=initialStaage,action)=>{
-    switch (action.type){
-        case addToCart:return{
-            ...state,cartItem:[...state.cartItem,action.payload],status:'pending'
-        };
-        case removeToCart:
-      const updatedCart = state.cartItem.filter(
+export const cartReducer = (state = initialStage, action) => {
+  switch (action.type) {
+    case addToCart:
+      return {
+        ...state,
+        cartItems: [...state.cartItems, action.payload],
+        status: "pending",
+      };
+    case removeToCart:
+      const updatedCart = state.cartItems.filter(
         (item) => item.id !== action.payload.id
       );
       return {
@@ -19,6 +22,7 @@ export const cartReducer=(state=initialStaage,action)=>{
         cartItems: updatedCart,
         status: "pending",
       };
-      default:return false;
-    }
-}
+    default:
+      return false;
+  }
+};

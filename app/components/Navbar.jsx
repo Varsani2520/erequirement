@@ -18,6 +18,7 @@ import { useState, useEffect } from "react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useSelector } from "react-redux";
 import { Badge } from "@mui/material";
+import { Login } from "@mui/icons-material";
 const pages = [
   { label: "Home", link: "/" },
   { label: "About", link: "/about" },
@@ -34,8 +35,12 @@ const settings = [
 function App() {
   const [cart, setCart] = useState(0);
   const carts = useSelector((state) => state.cart.cartItems);
+  console.log(carts, "cart msg");
   useEffect(() => {
-    setCart(carts.length);
+    if(carts){
+
+      setCart(carts.length);
+    }
   }, [carts]);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -75,7 +80,7 @@ function App() {
               textDecoration: "none",
             }}
           >
-           eShop
+            eShop
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -137,7 +142,7 @@ function App() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link href={page.link} style={{ textDecoration: "none" }}>
+              <Link href={page.link} style={{ textDecoration: "none" }}  key={page.label}>
                 <Button
                   key={page.label}
                   onClick={handleCloseNavMenu}
@@ -161,7 +166,7 @@ function App() {
             </Badge>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp"  />
               </IconButton>
             </Tooltip>
             <Menu

@@ -1,4 +1,5 @@
 import { addToCart, removeToCart } from "../reducer/cart";
+import { decrement, increment } from "../reducer/counter";
 
 export const addToCartItem=(item)=>({
     type:addToCart,payload:item

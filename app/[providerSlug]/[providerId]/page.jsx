@@ -31,7 +31,6 @@ const page = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const { providerSlug } = useParams();
   const router = useRouter();
-  const { singleProvider } = useParams();
   const [desc, setdesc] = useState([]);
   const [loading, setLoading] = useState(true);
   const StyledBreadcrumb = styled(Chip)(({ theme }) => ({
@@ -62,7 +61,8 @@ const page = () => {
   }));
   async function Desc() {
     try {
-      const response = await ProviderService();
+      const response = await ProviderService(providerSlug);
+      console.log("inside card",providerSlug);
       setdesc(response);
       setLoading(false);
     } catch (error) {
@@ -72,7 +72,6 @@ const page = () => {
   useEffect(() => {
     Desc();
   }, []);
-  ;
   return (
     <div>
       <Box sx={{ background: "hotpink" }}>
@@ -99,11 +98,11 @@ const page = () => {
           </Box>
         </Container>
       </Box>
-      <Box sx={{ display: "flex", mt: 10,justifyContent:'center' }}>
+      <Box sx={{ display: "flex", mt: 10, justifyContent: "center" }}>
         <Container>
           <Grid container spacing={2}>
             {loading
-              ? Array.from({ length: 6 }).map((_, index) => (
+              ? Array.from({ length: 6 }).map((index) => (
                   <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
                     <Box>
                       <Card sx={{ maxWidth: 345 }}>
@@ -123,16 +122,9 @@ const page = () => {
               : desc.map((response) => {
                   if (providerSlug == response.provider_id)
                     return (
-                      <>
-                        <Grid
-                          item
-                          xs={12}
-                          sm={6}
-                          md={4}
-                          lg={4}
-                          key={response.id}
-                        >
-                          <Card sx={{ maxWidth: 345 }} key={response.id}>
+                      <div key={response.provider_id}>
+                        <Grid item key={response.id}>
+                          <Card sx={{ maxWidth: 350 }} key={response.id}>
                             <CardHeader
                               title={response.name}
                               sx={{ background: "#b7bfee" }}
@@ -140,14 +132,9 @@ const page = () => {
                             <CardMedia
                               sx={{ cursor: "pointer" }}
                               component="img"
-                              height="194"
                               image={response.img}
                               alt={response.alt}
-                              onClick={(e) =>
-                                router.push(
-                                  `${response.provider_id}/${response.id}`
-                                )
-                              }
+                              onClick={e=>router.push(`${response.provider_id}/${response.id}`)}
                               key={response.id}
                             />
 
@@ -170,7 +157,7 @@ const page = () => {
                           </Card>
                           <br />
                         </Grid>
-                      </>
+                      </div>
                     );
                 })}
           </Grid>

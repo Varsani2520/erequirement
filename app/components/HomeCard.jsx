@@ -1,13 +1,13 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import { HomeService } from "../service/HomeService";
-import { Checkbox, Container, Grid,Typography } from "@mui/material";
+import { Checkbox, Container, Grid, Typography } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 const HomeCard = () => {
   const [card, setCard] = useState([]);
   const [loading, setLoading] = useState(true);
-const router=useRouter()
+  const router = useRouter();
   async function fetchCards() {
     const result = await HomeService();
     setCard(result);
@@ -29,17 +29,17 @@ const router=useRouter()
     fetchCards();
   }, []);
 
-  
-
   return (
+    <>
+    
     <Container>
       <Box sx={{ display: "flex" }}>
         <Grid container spacing={2}>
           {loading
-            ? Array.from({ length: 6 }).map((_, index) => (
+            ? Array.from({ length: 6 }).map((_,index) => (
                 <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
                   <Box>
-                    <Card sx={{ maxWidth: 345 }} >
+                    <Card sx={{ maxWidth: 345 }}>
                       <Skeleton
                         variant="rectangular"
                         height={194}
@@ -56,9 +56,23 @@ const router=useRouter()
             : card.map((response) => (
                 <Grid item xs={12} sm={6} md={4} lg={4} key={response.id}>
                   <Box>
-                    <Card sx={{ maxWidth: 345 ,}} onClick={()=>router.push(`${response.id}/${response.slug}`)}>
-                      <CardHeader title={response.title} sx={{ background: "#d4d5ee" }} />
-                      <CardMedia component="img" height="194" image={response.image} alt={response.alt}sx={{cursor:'pointer'}} />
+                    <Card
+                      sx={{ maxWidth: 345 }}
+                      onClick={() =>
+                        router.push(`${response.id}/${response.slug}`)
+                      }
+                    >
+                      <CardHeader
+                        title={response.title}
+                        sx={{ background: "#d4d5ee" }}
+                      />
+                      <CardMedia
+                        component="img"
+                        height="194"
+                        image={response.image}
+                        alt={response.alt}
+                        sx={{ cursor: "pointer" }}
+                      />
                       <CardContent>
                         <Typography variant="body2" color="text.secondary">
                           {response.description}
@@ -84,6 +98,7 @@ const router=useRouter()
         </Grid>
       </Box>
     </Container>
+    </>
   );
 };
 

@@ -5,10 +5,12 @@ import { PersistGate } from "redux-persist/integration/react";
 
 export const StoreProvider = ({ children }) => {
   return (
+    <>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistedStore}>
         {children}
       </PersistGate>
     </Provider>
+    </>
   );
 };

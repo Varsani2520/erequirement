@@ -1,7 +1,14 @@
-import React from "react";
+"use client";
+import Paycheck from "@/app/components/paycheck";
+import { Container } from "@mui/material";
 
-const page = () => {
-  return <div>payment</div>;
+const Payment = () => {
+  return (
+    <Container>
+      Payment Method:
+      <Paycheck />
+    </Container>
+  );
 };
 
-export default page;
+export default Payment;

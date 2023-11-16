@@ -71,23 +71,27 @@ const page = () => {
           ) : (
             carts.map((cart) => (
               <>
-                <Grid xs={6} md={3} key={cart.id}>
+              <Grid container spacing={2} mt={5}>
+              <Grid  xs={6} md={4} key={cart.id}>
                   <CardMedia
-                    image={cart.image}
+                    image={cart.img}
                     width={300}
                     height={140}
                     component="img"
                     alt="img"
                   />
                 </Grid>
-                <Grid xs={6} md={3}>
-                  <CardHeader>{cart.name}</CardHeader>
+                <Grid xs={6} md={2}>
+                  <CardHeader>Name:{cart.name}</CardHeader>
                   <CardContent>
-                    <Typography>{cart.price}</Typography>
-                    <Typography>Qty:1</Typography>
+                    <Typography>Price:{cart.price}</Typography>
+                    <Typography>Quantity:1</Typography>
                     <Button onClick={() => rmv(cart)}>REMOVE</Button>
                   </CardContent>
                 </Grid>
+              </Grid>
+                
+                
               </>
             ))
           )}

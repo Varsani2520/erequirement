@@ -1,14 +1,6 @@
 import { NextResponse } from "next/server";
-import toys from "../services/json/toys.json";
-import kids from "../services/json/kids.json";
-import woman from "../services/json/woman.json";
-import men from "../services/json/men.json";
-import beauty from "../services/json/beauty.json";
-import bag from "../services/json/bag.json";
-import jewellery from "../services/json/jewellery.json";
-import kitchen from "../services/json/kitchen.json";
-import electronic from "../services/json/electronic.json";
 import { services } from "@/app/modal/serviceModal";
+import { connectDatabase } from "@/app/database/db";
 export async function POST(request) {
   const { id } = await request.json();
 
@@ -19,8 +11,8 @@ export async function POST(request) {
 export async function GET(request) {
   console.log("service get receveid");
   try {
+    connectDatabase()
     const servicesProvider = await services.find();
-    console.log("service receveid", servicesProvider);
     return NextResponse.json(servicesProvider);
   } catch (error) {
     console.log("service not received", error);

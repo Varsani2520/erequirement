@@ -9,19 +9,23 @@ import HomeCard from "./components/HomeCard";
 
 const page = () => {
   return (
-    <Container >
-      <Grid container justifyContent="center" alignItems="center" >
-        <Grid item lg={12} md={12} xs={12} sx={{mt:'10%'}}>
-          
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRkYirTLhuwtOs47q2Dm3Ob1pEfQ_eXYeCUA&usqp=CAU"  height="auto"  width="100%" alt="welcome" style={{maxWidth:'800px'}}/>
+    <Container>
+      <Grid container justifyContent="center" alignItems="center">
+        <Grid item lg={12} md={12} xs={12} sx={{ mt: "10%" }}>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRkYirTLhuwtOs47q2Dm3Ob1pEfQ_eXYeCUA&usqp=CAU"
+            height="auto"
+            width="100%"
+            alt="welcome"
+            style={{ maxWidth: "800px" }}
+          />
         </Grid>
-        
       </Grid>
 
       <Divider1 />
-      <Slider1/>
-      <Divider2/>
-      <HomeCard/>
+      <Slider1 />
+      <Divider2 />
+      <HomeCard />
     </Container>
   );
 };

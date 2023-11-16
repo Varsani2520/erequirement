@@ -28,7 +28,7 @@ const layout = ({ children }) => {
         </Stepper>
       </Box>
       <Container>
-        <Grid container spacing={2}>
+        <Grid container spacing={3}>
           <Grid xs={12} md={6}>
             {children}
           </Grid>
